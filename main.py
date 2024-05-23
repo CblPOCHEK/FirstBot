@@ -6,11 +6,6 @@ from aiogram. types import InlineKeyboardMarkup, InlineKeyboardButton
 bot = Bot (token= TELEGRAM_TOKEN)
 dp = Dispatcher (bot)
 
-keyboard_inline = InlineKeyboardMarkup(row_width= 1)
-but_inline = InlineKeyboardButton (text = 'Посмотреть', url= 'https://www.purina.ru/cats/breed-Library')
-but_inline2 = InlineKeyboardButton( text = 'Посмотреть', url= 'https://www.purina.ru/cats/breed-library')
-keyboard_inline.add (but_inline, but_inline2)
-
 async def set_commands (bot: Bot) :
     commands = [
         types.BotCommand (command= '/start', description= 'Команда для того, чтобы запустить бота'),
@@ -25,7 +20,7 @@ async def start(message: types.Message) :
 
 @dp.message_handler (lambda message: message.text == 'Отправь фото кота')
 async def button_1_click(message: types.Message) :
-    await bot.send_photo(message.chat.id, photo= 'https://resizer.mail.ru/p/2f81f3fd-0006-57b5-9d32-2d8bf7c7ec0e/AQAOx65FyDa9iDIYPFhSnYHmdA4pH465zkyC-J8e7nVPBTNfQfD23VpakzWwMDql0zY5DbsrLZTBVZzFKie8w-69bLw.jpg',caption='Вот тебе кот', reply_markup=keyboard_inline)
+    await bot.send_photo(message.chat.id, photo= 'https://resizer.mail.ru/p/2f81f3fd-0006-57b5-9d32-2d8bf7c7ec0e/AQAOx65FyDa9iDIYPFhSnYHmdA4pH465zkyC-J8e7nVPBTNfQfD23VpakzWwMDql0zY5DbsrLZTBVZzFKie8w-69bLw.jpg',caption='Вот тебе кот')
 
 @dp.message_handler (lambda message: message.text == 'Перейти на следующую клавиатуру')
 async def button_2_click(message: types.Message) :
